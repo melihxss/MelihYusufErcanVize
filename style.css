@@ -15,9 +15,7 @@ body {
     padding: 10px;
     text-align: center;
     display: flex;
-    position:fixed;
-    top:0;
-    width:100%;
+ 
   }
   
   nav ul {
@@ -47,7 +45,6 @@ body {
     position: relative;
     text-align: center;
     color: white;
-    margin-top:50px;
   }
   
   video {
@@ -82,7 +79,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 999;
+    z-index: 998;
   }
   
   .overlay h1 {
@@ -97,7 +94,7 @@ body {
   
   
   section {
-    padding: 40px;
+    padding: 70px 40px 40px 40px !important;
     text-align: center;
   }
   
@@ -153,7 +150,7 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    z-index: 998;
+    z-index: 997;
     background-color: rgba(0, 0, 0, 0.4)
   }
   .placesContainer{
@@ -172,6 +169,7 @@ body {
     overflow: hidden;
     box-shadow: 15px 18px 12px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    cursor: help;
   }
   .aboutPlace{
     position: absolute;
@@ -189,8 +187,8 @@ body {
     filter: brightness(50%);
   }
   .placesItem:hover .aboutPlace{
-
-    transform: translateY(-90%);
+    
+    top: 0;
   }
   .aboutPlace p{
     color: white;
@@ -227,23 +225,53 @@ body {
     align-items: center;
     justify-content: center;
 }
+@keyframes efectIn {
+  from {
+    max-height: 500px;
+    opacity: 1;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes efectOut {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 500px;
+    opacity: 1;
+  }
+}
 
 .accordionContent {
-    display: none; 
-    padding: 15px;
-    background-color: #fff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  background-color: #fff;
+  transition: max-height 1s ease, opacity 1s ease;
 }
-
 
 .checkbox:checked + .accordionHeader + .accordionContent {
-    display: flex;
+  padding: 15px;
+  max-height: 500px;
+  opacity: 1;
+  animation: efectOut 1s forwards;
+}
 
-  align-items: center;
+.checkbox:not(:checked) + .accordionHeader + .accordionContent {
+  animation: efectIn 1s forwards;
 }
+
 .checkbox:checked + label .material-symbols-outlined {
-  transform: rotate(180deg); 
-  
+  transform: rotate(180deg);
 }
-.material-symbols-outlined{
+
+.material-symbols-outlined {
   transition: transform 0.3s;
 }
