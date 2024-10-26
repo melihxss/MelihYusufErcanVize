@@ -6,7 +6,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f2e9e4; 
+    background-color: #107a00;
+    background-image: url(http://www.transparenttextures.com/patterns/45-degree-fabric-light.png);
     
   }
   
@@ -39,7 +40,9 @@ body {
   nav ul li a:hover {
     color: #18bc9c;
   }
-  
+  section > h2{
+  color: white;
+ }
 
   #home {
     position: relative;
